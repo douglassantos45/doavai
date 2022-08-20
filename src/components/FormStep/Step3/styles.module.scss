@@ -1,0 +1,104 @@
+#step3 {
+  padding: 0 1rem;
+
+  .wrapper {
+    margin-top: 3rem;
+  }
+
+  .institution_wrapper {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+
+    p {
+      margin-top: 1rem;
+      font-size: 1.3rem;
+      text-align: justify;
+    }
+
+    .address {
+      display: flex;
+      gap: 8px;
+      padding: 1.2rem 0;
+      font-size: 1.3rem;
+
+      span {
+        font-weight: 400;
+      }
+    }
+
+    .social {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      font-size: 1.4rem;
+      font-weight: 600;
+
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        background-color: #85ffff33;
+        padding: 0.5rem 1.2rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        font-size: 1.1rem;
+        cursor: pointer;
+
+        img {
+          width: 14px;
+          height: 14px;
+        }
+
+        a {
+          color: var(--text-color);
+          font-weight: 400;
+        }
+
+        &:hover {
+          filter: contrast(0.6);
+        }
+      }
+    }
+  }
+
+  .btn_group {
+    display: flex;
+    gap: 5px;
+    margin-top: 2rem;
+  }
+  
+  .btn_back {
+    margin-right: 0.5rem;
+    background-color: var(--gray-50);
+  
+    &:hover {
+      background-color: var(--gray-50);
+      opacity: 0.8;
+    }
+  }
+
+  button {
+    padding: 1rem 1.5rem;
+    max-width: 200px;
+    font-size: 1.2rem;
+    border-radius: 4rem;
+    font-weight: 500;
+    background-color: var(--primary-color);
+    color: var(--text-color-white);
+    cursor: pointer;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition:  all 0.3s ease;
+
+    &:hover {
+      background-color: var(--primary-color-hover);
+      transform: none;
+    }
+  }
+
+}

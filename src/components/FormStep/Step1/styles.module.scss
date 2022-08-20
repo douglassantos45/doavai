@@ -1,0 +1,105 @@
+#step1 {
+  form {
+    min-height: 100%;
+    width: 100%;
+    padding: 0 1rem;
+
+    .phone_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      background-color: var(--white-color);
+
+      > span {
+        position: absolute;
+        left: 50px;
+        bottom: 9px;
+        font-size: 1.3rem;
+        color: var(--gray-50);
+        
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 17px;
+        bottom: 11px;
+        background-image: url('https://img.icons8.com/fluency/96/brazil.png');        
+        background-size: 18px 18px;
+        width: 18px; 
+        height: 18px;
+        z-index: 2;
+      }
+
+      &::before {
+        content: '';
+        height: 40%;
+        bottom: 8px;
+        left: 45px;
+        z-index: 2;
+        width: 2px;
+        background-color: var(--gray-10);
+        position: absolute;
+      }
+
+      div {
+        label {
+          margin-left: 40px;
+          padding-left: 10px;
+        }
+        input {
+          padding-left: 85px;
+
+          &:not(:placeholder-shown) + label {
+            margin-left: 30px;
+            padding-left: 0px;
+          }
+
+          &:not(:focus) + label {
+            margin-left: 30px;
+            
+          }
+        }
+      }
+    }
+
+    button {
+     
+      font-size: 1.2rem;
+      margin-top: 2.5rem;
+      padding: 1rem 1.5rem;
+
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+
+  .show {
+    display: none;
+  }
+}
+
+@media (min-width: 850px) {
+  #step1 {
+   .col_3 {
+    display: flex;
+    gap: 1rem;
+   }
+   .col_2 {
+    display: flex;
+    gap: 1rem;
+   }
+  }
+}
+
+@media (min-width: 480px) {
+  #step1 {
+
+  }
+}
+
+
+

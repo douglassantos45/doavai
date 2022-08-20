@@ -1,0 +1,80 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  padding: 2rem;
+
+  p {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+
+    svg {
+      font-size: 1.9rem;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+      color: var(--primary-color);
+
+      animation: heart 0.9s infinite;
+    }
+  }
+
+  span a {
+    font-weight: 600;
+    color: var(--text-color);
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      left: 0;
+      bottom: -5px;
+
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .footer {
+    p {
+      flex-direction: column;
+    }
+  }
+}
+
+@keyframes heart{
+  0% {
+    transform: scale(0.9);
+  }
+
+  25% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+  70% {
+    transform: scale(1.15);
+  }
+  80% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

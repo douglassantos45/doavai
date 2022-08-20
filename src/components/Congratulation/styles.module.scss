@@ -1,0 +1,175 @@
+#congratulation {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.wrapper {
+  animation: modal_animation 500ms;
+  position: relative;
+
+  background-color: var(--white-color);
+  border-radius: 1rem;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+
+  width: 90%;
+  height: 90%;
+  max-width: 420px;
+  max-height: 550px;
+  
+
+  transition: all 0.3s ease;
+
+  .close_modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 3rem;
+    transition: filter 0.3s ease;
+
+    cursor: pointer;
+
+    &:hover {
+      filter: contrast(0.6)
+    }
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 3rem;
+
+    img {
+      width: 200px;
+      margin: 3rem 0 1rem;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      color: var(--primary-color);
+    }
+
+    p {
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+
+    section {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      margin-top: 2rem;
+      width: 100%;
+
+      span {
+        display: block;
+        font-weight: 500;
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      textarea {
+        background-color: var(--gray-10);
+        padding: 1rem 1.5rem;
+        font-size: 1.2rem;
+        height: 130px;
+        border-radius: 0.6rem;
+      }
+    }
+  }
+
+  .modal_form {
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+  }
+
+
+  /* Chrome, Edge and Safari */
+  *::-webkit-scrollbar {
+    width: 5px;
+    width: 5px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 0px;
+    background-color: var(--white-color);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: var(--primary-color);
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color-hover);
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background-color: var(--primary-color-hover);
+  }
+}
+
+@media (min-width: 560px) {
+  #modal {
+    .modal_wrapper {
+      max-height: 660px;
+      padding: 3rem; 
+    }
+    .close_modal {
+      right: 25px;
+    }
+  }
+}
+
+@keyframes modal_animation {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  25% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  75% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
