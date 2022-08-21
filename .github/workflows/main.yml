@@ -1,0 +1,41 @@
+name: GitHub Actions Vercel Preview Deployment
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+on:
+  pull_request:
+    types:
+      - closed
+    branches: ['dev']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+  deploy-dev:
+    runs-on: ubuntu-latest
+    environment: 
+      name: develop
+      url: 'doavai.vercel.com'
+    needs: build
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy DEV
+  
+  deploy-prod:
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: 'doavai.vercel.com'
+    needs: deploy-dev
+    steps:
+      - name: Run a one-line script
+        run: echo Deploy Production
+
+
+
+
