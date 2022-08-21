@@ -1,17 +1,28 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { FormAction, useForm } from '../../contexts/FormStepContext';
-import Button from '../Button';
+
 import styles from './styles.module.scss';
 
 export default function Congratulation() {
   const { state, dispatch } = useForm();
+  const [textareaValue, setTextareaValue] = useState('');
 
   const handleCloseModal = () => {
     dispatch({
       type: FormAction.SETCOMPLETED,
       payload: false,
     });
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = e.target;
+
+    setTextareaValue(value);
+  };
+
+  const submit = () => {
+    console.log(textareaValue);
   };
 
   if (!state.completed) return;
@@ -30,12 +41,16 @@ export default function Congratulation() {
 
           <section>
             <span>Feedback</span>
-            <textarea name="feedback" id="feedback"></textarea>
+            <textarea
+              name="feedback"
+              id="feedback"
+              onChange={handleChange}
+            ></textarea>
           </section>
         </main>
 
         <footer>
-          <button className={styles.send} onClick={handleCloseModal}>
+          <button className={styles.send} onClick={submit}>
             Enviar
           </button>
           <button className={styles.cancel} onClick={handleCloseModal}>
