@@ -7,20 +7,19 @@ import styles from './styles.module.scss';
 export default function Congratulation() {
   const { state, dispatch } = useForm();
 
+  const handleCloseModal = () => {
+    dispatch({
+      type: FormAction.SETCOMPLETED,
+      payload: false,
+    });
+  };
+
   if (!state.completed) return;
 
   return (
     <div id={styles.congratulation}>
       <div className={styles.wrapper}>
-        <div
-          className={styles.close_modal}
-          onClick={e => {
-            dispatch({
-              type: FormAction.SETCOMPLETED,
-              payload: false,
-            });
-          }}
-        >
+        <div className={styles.close_modal} onClick={handleCloseModal}>
           <FiX />
         </div>
 
@@ -36,8 +35,12 @@ export default function Congratulation() {
         </main>
 
         <footer>
-          <Button text="Enviar" />
-          <button className={styles.cancel}>Cancelar</button>
+          <button className={styles.send} onClick={handleCloseModal}>
+            Enviar
+          </button>
+          <button className={styles.cancel} onClick={handleCloseModal}>
+            Cancelar
+          </button>
         </footer>
       </div>
     </div>
