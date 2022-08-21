@@ -1,5 +1,5 @@
 type InstituionsProps = {
-  id: number;
+  id: string;
   name: string;
   city: string;
   zip?: string;
@@ -10,7 +10,7 @@ type InstituionsProps = {
 
 export const institutions: InstituionsProps[] = [
   {
-    id: 1,
+    id: '1',
     name: 'App Masters Donation',
     city: 'Juiz de Fora',
     zip: '44790000',
@@ -37,7 +37,7 @@ export const institutions: InstituionsProps[] = [
     ],
   },
   {
-    id: 2,
+    id: '2',
     name: 'Company(2)',
     city: 'Company(2)',
     district: 'Bairro(2)',
@@ -65,7 +65,7 @@ export const institutions: InstituionsProps[] = [
     ],
   },
   {
-    id: 3,
+    id: '3',
     name: 'Company(3)',
     city: 'City(3)',
     zip: '44790000',
@@ -96,7 +96,7 @@ export const institutions: InstituionsProps[] = [
     ],
   },
   {
-    id: 4,
+    id: '4',
     name: 'Company(4)',
     city: 'City(4)',
     district: 'Bairro(4)',
@@ -126,7 +126,7 @@ export const institutions: InstituionsProps[] = [
     ],
   },
   {
-    id: 5,
+    id: '5',
     name: 'Company(5)',
     city: 'City(5)',
     district: 'Bairro(5)',
