@@ -2,10 +2,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem 0;
+  padding: 2.5rem 0;
 
   .step_wrapper {
     display: flex;
+    margin-bottom: 1.5rem;
     
     li {
       display: flex;
@@ -15,7 +16,7 @@
       text-align: center;
       flex-basis: 0;
       flex-grow: 1;
-      padding: 0 2rem;
+      padding: 0 2.7rem;
       position: relative;
 
       &:not(:first-child) {
@@ -75,7 +76,7 @@
 
       > p {
         margin-top: 1rem;
-        font-size: 0.8rem;
+        font-size: 1rem;
         font-weight: 400;
         position: absolute;
         bottom: -25px;
