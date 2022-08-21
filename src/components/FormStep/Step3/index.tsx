@@ -16,8 +16,6 @@ export default function Step3() {
 
   const [isInsitutions] = institutions.map(({ zip }) => zip === '44790000');
 
-  console.log(state);
-
   const saveState = () => {
     dispatch({
       type: FormAction.SETINSTITUTION,
@@ -40,11 +38,6 @@ export default function Step3() {
       payload: {
         id: institutionSelected,
       },
-    });
-
-    dispatch({
-      type: FormAction.SETNAME,
-      payload: 'douglas',
     });
 
     dispatch({
