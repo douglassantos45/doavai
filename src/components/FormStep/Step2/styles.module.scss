@@ -31,6 +31,11 @@
     animation: shake 350ms;
   }
 
+  .btn_group:nth-child(3) {
+    align-items: center;
+    justify-content: center;
+  }
+
   .btn_group {
     display: flex;
     gap: 1rem;
@@ -120,6 +125,11 @@
           width: 100%;
         }
       }
+    }
+
+    .btn_group:nth-child(3) {
+      align-items: center;
+      justify-content: initial;
     }
   }
 }
