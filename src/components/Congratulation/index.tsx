@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { FormAction, useForm } from '../../contexts/FormStepContext';
+import Button from '../Button';
 import styles from './styles.module.scss';
 
 export default function Congratulation() {
@@ -33,6 +34,11 @@ export default function Congratulation() {
             <textarea name="feedback" id="feedback"></textarea>
           </section>
         </main>
+
+        <footer>
+          <Button text="Enviar" />
+          <button className={styles.cancel}>Cancelar</button>
+        </footer>
       </div>
     </div>
   );
