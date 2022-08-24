@@ -1,12 +1,17 @@
-import { ChangeEvent, MouseEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { FormAction, useForm } from '../../contexts/FormStepContext';
+import { applyFocus } from '../../utils/applyFocus';
 
 import styles from './styles.module.scss';
 
 export default function Congratulation() {
   const { state, dispatch } = useForm();
   const [textareaValue, setTextareaValue] = useState('');
+
+  useEffect(() => {
+    applyFocus('feedback');
+  }, [state.completed]);
 
   const handleCloseModal = () => {
     dispatch({
@@ -40,7 +45,7 @@ export default function Congratulation() {
           <p>Your donation has been register</p>
 
           <section>
-            <span>Feedback</span>
+            <label htmlFor="feedback">Feedback</label>
             <textarea
               name="feedback"
               id="feedback"
