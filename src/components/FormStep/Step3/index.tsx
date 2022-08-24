@@ -11,7 +11,7 @@ export default function Step3() {
   const { state, dispatch } = useForm();
 
   const [institutionSelected, setInstitutionSelectedf] = useState(
-    state.institution.id,
+    state.institutionId || '1',
   );
 
   const [isInsitutions] = institutions.map(({ zip }) => zip === '44790000');
@@ -21,18 +21,18 @@ export default function Step3() {
       type: FormAction.SETINSTITUTION,
       payload: institutionSelected,
     });
-  };
 
-  const handleBackStep = () => {
     dispatch({
       type: FormAction.SETCURRENTSTEP,
       payload: 2,
     });
+  };
 
+  const handleBackStep = () => {
     saveState();
   };
 
-  const submit = () => {
+  const submit = async () => {
     dispatch({
       type: FormAction.SETINSTITUTION,
       payload: {
