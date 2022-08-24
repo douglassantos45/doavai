@@ -1,7 +1,9 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { RiMenu3Fill } from 'react-icons/ri';
 import { useModal } from '../../contexts/ModalContext';
+import { ActiveLink } from '../ActiveLink';
 
 import Button from '../Button';
 
@@ -17,9 +19,11 @@ export default function Header() {
 
   return (
     <header className={`container ${styles.header}`}>
-      <div className={styles.logo}>
-        <img src="assets/img/logo.svg" alt="" />
-      </div>
+      <Link href="/">
+        <div className={styles.logo}>
+          <img src="assets/img/logo.svg" alt="" />
+        </div>
+      </Link>
       <nav className={showMenu ? styles.show_menu : ''}>
         <li>
           <a href="/404" target="_blank">
@@ -32,9 +36,11 @@ export default function Header() {
           </a>
         </li>
         <li>
-          <a href="/404" target="_blank">
-            Company
-          </a>
+          <ActiveLink activeClassName={styles.active_link} href="/institutions">
+            <a className={`${styles.nav_link} ${styles.active_link}`}>
+              Instituições
+            </a>
+          </ActiveLink>
         </li>
         <li>
           <Button
