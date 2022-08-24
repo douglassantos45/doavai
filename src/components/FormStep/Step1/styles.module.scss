@@ -15,7 +15,7 @@
       > span {
         position: absolute;
         left: 50px;
-        bottom: 9px;
+        bottom: 15px;
         font-size: 1.3rem;
         color: var(--gray-50);
         
@@ -25,7 +25,7 @@
         content: '';
         position: absolute;
         left: 17px;
-        bottom: 11px;
+        bottom: 15px;
         background-image: url('https://img.icons8.com/fluency/96/brazil.png');        
         background-size: 18px 18px;
         width: 18px; 
@@ -36,7 +36,7 @@
       &::before {
         content: '';
         height: 40%;
-        bottom: 8px;
+        bottom: 10px;
         left: 45px;
         z-index: 2;
         width: 2px;
