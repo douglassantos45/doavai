@@ -23,7 +23,7 @@ type StateProps = {
   complement: string;
   devices: { type: string; condition: string }[];
   countDevices: number;
-  institution: { id: string };
+  institutionId: string;
   completed: boolean;
 };
 
@@ -51,9 +51,7 @@ const initialData: StateProps = {
     },
   ],
   countDevices: 1,
-  institution: {
-    id: '1',
-  },
+  institutionId: '1',
   completed: false,
 };
 
@@ -112,7 +110,7 @@ const formReducer = (state: StateProps, action: ActionProps) => {
       return { ...state, countDevices: action.payload };
 
     case FormAction.SETINSTITUTION:
-      return { ...state, institution: action.payload };
+      return { ...state, institutionId: action.payload };
 
     case FormAction.SETCOMPLETED:
       return { ...state, completed: action.payload };
