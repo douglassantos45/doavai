@@ -252,6 +252,7 @@ export default function Step1() {
             <Input
               name="complement"
               label="Complemento"
+              {...register('complement')}
               value={state.complement}
             />
           </div>
