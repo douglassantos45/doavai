@@ -76,11 +76,12 @@
         margin-top: 1.5rem;
         width: 100%;
 
-        span {
+        label {
           display: block;
           font-weight: 500;
           font-size: 1.2rem;
           margin-bottom: 0.5rem;
+          color: var(--text-color);
         }
 
         textarea {

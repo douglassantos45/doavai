@@ -8,6 +8,7 @@
 
   .logo img{
     width: 100px;
+    cursor: pointer;
   }
 
   nav {
@@ -31,12 +32,33 @@
     }
 
     li{
+
       a {
         font-size: 2.1rem;
         color: var(--text-color);
 
         transition: all 0.3s ease;
         position: relative;
+
+        &:hover {
+          color: var(--primary-color);
+        }
+  
+        &.active_link {
+          color: var(--primary-color);
+          font-weight: 500;
+        }
+      
+        &.active_link::after {
+          content: '';
+          height: 2px;
+          border-radius: 3px 3px 0 0;
+          width: 100%;
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          background: var(--primary-color);
+        }
 
         &::after {
           content: "";

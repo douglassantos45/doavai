@@ -1,44 +1,43 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import toast from 'react-hot-toast';
-
 import { FormAction, useForm } from '../../../contexts/FormStepContext';
-import { fieldValidation } from '../../../utils/validation';
 import { institutions } from '../../../mocks/institutions';
 
 import styles from './styles.module.scss';
-import Congratulation from '../../Congratulation';
 import { useModal } from '../../../contexts/ModalContext';
 
 export default function Step3() {
   const { handleCloseModal } = useModal();
   const { state, dispatch } = useForm();
 
-  const [institutionsList, setInstitutionsList] = useState(state.devices);
-  const [institutionSelected, setInstitutionSelectedf] = useState(1);
+  const [institutionSelected, setInstitutionSelectedf] = useState(
+    state.institutionId || '1',
+  );
 
   const [isInsitutions] = institutions.map(({ zip }) => zip === '44790000');
 
   const saveState = () => {
     dispatch({
-      type: FormAction.SETDEVICES,
-      payload: institutionsList,
+      type: FormAction.SETINSTITUTION,
+      payload: institutionSelected,
     });
-  };
 
-  const handleBackStep = () => {
     dispatch({
       type: FormAction.SETCURRENTSTEP,
       payload: 2,
     });
+  };
 
+  const handleBackStep = () => {
     saveState();
   };
 
-  const submit = () => {
-    saveState();
+  const submit = async () => {
     dispatch({
-      type: FormAction.SETNAME,
-      payload: 'douglas',
+      type: FormAction.SETINSTITUTION,
+      payload: {
+        id: institutionSelected,
+      },
     });
 
     dispatch({
@@ -49,18 +48,7 @@ export default function Step3() {
     handleCloseModal();
   };
 
-  const handleNextPage = (e: ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    dispatch({
-      type: FormAction.SETCURRENTSTEP,
-      payload: 3,
-    });
-
-    saveState();
-  };
-
-  const handleDevicesChange = e => {
+  const handleDevicesChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     console.log(value);
 
@@ -69,7 +57,7 @@ export default function Step3() {
 
   return (
     <div id={styles.step3}>
-      <form onSubmit={handleNextPage}>
+      <form>
         <div className="separator">
           <div></div>
           <div>Instituições</div>
@@ -100,7 +88,7 @@ export default function Step3() {
 
           {institutions.map(
             institution =>
-              institution.id == institutionSelected && (
+              institution.id === institutionSelected && (
                 <section
                   className={styles.institution_wrapper}
                   key={institution.id}

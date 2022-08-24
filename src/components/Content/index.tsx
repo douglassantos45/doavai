@@ -1,13 +1,11 @@
 import { useForm } from '../../contexts/FormStepContext';
 import { useModal } from '../../contexts/ModalContext';
 import Button from '../Button';
-import Congratulation from '../Congratulation';
-import Modal from '../Modal';
+
 import styles from './styles.module.scss';
 
 export default function Content() {
   const { handleOpenModal } = useModal();
-  const { state } = useForm();
 
   return (
     <>
@@ -27,8 +25,6 @@ export default function Content() {
 
         <img src="assets/img/illustration.svg" alt="" />
       </div>
-      <Modal />
-      <Congratulation />
     </>
   );
 }

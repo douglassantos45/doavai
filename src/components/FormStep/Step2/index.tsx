@@ -150,7 +150,7 @@ export default function Step2() {
               </label>
             </div>
           ))}
-          <div className={styles.btn_group}>
+          <div className={styles.btn_device}>
             <div onClick={handleDeviceAdd}>
               <span>Adicionar</span>
               <FiPlus />

@@ -23,6 +23,7 @@ type StateProps = {
   complement: string;
   devices: { type: string; condition: string }[];
   countDevices: number;
+  institutionId: string;
   completed: boolean;
 };
 
@@ -50,6 +51,7 @@ const initialData: StateProps = {
     },
   ],
   countDevices: 1,
+  institutionId: '1',
   completed: false,
 };
 
@@ -71,6 +73,7 @@ export enum FormAction {
   SETCOMPLEMENT,
   SETDEVICES,
   SETCOUNTDEVICES,
+  SETINSTITUTION,
   SETCOMPLETED,
 }
 //Recebe dados e ações
@@ -105,6 +108,9 @@ const formReducer = (state: StateProps, action: ActionProps) => {
       return { ...state, devices: action.payload };
     case FormAction.SETCOUNTDEVICES:
       return { ...state, countDevices: action.payload };
+
+    case FormAction.SETINSTITUTION:
+      return { ...state, institutionId: action.payload };
 
     case FormAction.SETCOMPLETED:
       return { ...state, completed: action.payload };
