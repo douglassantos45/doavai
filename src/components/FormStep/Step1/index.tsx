@@ -1,19 +1,31 @@
 import { useForm as useReactHooForm } from 'react-hook-form';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { InputValidationProps, inputSchema } from '../yupSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import validator from 'validator';
 
 import { Input } from '../../Input';
 import Button from '../../Button';
 
 import { FormAction, useForm } from '../../../contexts/FormStepContext';
 import { normalizeZip, normalizePhone } from '../../../utils/masks';
-import { InputValidationProps, inputSchema } from '../yupSchema';
-import { fieldValidation } from '../../../utils/validation';
-import { applyFocus } from '../../../utils/applyFocus';
 import { apiCep } from '../../../services/api-cep';
-import toast from 'react-hot-toast';
 
 import styles from './styles.module.scss';
+
+type FormInputProps = {
+  name: string;
+  email?: string;
+  phone: string;
+  zip: string;
+  city?: string;
+  state?: string;
+  number: string;
+  streetAddress: string;
+  district: string;
+  complement?: string;
+};
 
 export default function Step1() {
   const {
@@ -21,6 +33,7 @@ export default function Step1() {
     handleSubmit,
     watch,
     setValue,
+    setFocus,
     formState: { errors },
   } = useReactHooForm<InputValidationProps>({
     resolver: yupResolver(inputSchema),
@@ -28,23 +41,37 @@ export default function Step1() {
 
   const { state, dispatch } = useForm();
   const [fieldsInputInvalid, setFieldsInputInvalid] = useState([]);
+  const [inputPhoneError, setInputPhoneError] = useState('');
+  const [inputEmailError, setInputEmailError] = useState('');
 
   const inputZip = watch('zip');
   const inputPhone = watch('phone');
+  const inputEmail = watch('email');
 
-  useEffect(() => applyFocus('name'), []);
+  useEffect(() => setFocus('name'), []);
 
   useEffect(() => {
     if (inputZip) {
       setValue('zip', normalizeZip(inputZip));
     }
-  }, [inputZip]);
 
-  useEffect(() => {
     if (inputPhone) {
       setValue('phone', normalizePhone(inputPhone));
+      setInputPhoneError('');
+      if (!validator.isMobilePhone(inputPhone, ['pt-BR'])) {
+        setInputPhoneError('Informe o telefone corretamente. ');
+        setFocus('phone');
+      }
     }
-  }, [inputPhone]);
+
+    if (inputEmail) {
+      setInputEmailError('');
+      if (!validator.isEmail(inputEmail)) {
+        setInputEmailError('Informe um e-mail válido.');
+        setFocus('email');
+      }
+    }
+  }, [inputPhone || inputEmail || inputZip]);
 
   const handleNextPage = () => {
     dispatch({
@@ -53,8 +80,7 @@ export default function Step1() {
     });
   };
 
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = (data: FormInputProps) => {
     Object.keys(data).forEach(input => {
       const value = data[input];
 
@@ -70,12 +96,14 @@ export default function Step1() {
 
   const checkCep = async () => {
     const zip = inputZip?.replace('-', '');
-    if (zip?.length < 8 || zip === undefined) return;
+    if (zip.length === 0) return;
+
+    if (zip?.length < 8 || zip === undefined)
+      return toast.error('CEP inválido.');
 
     try {
       const result = await apiCep.get(`${zip}/json/`);
       const { data } = result;
-      console.log(data);
 
       //Verificando se o cep foi encontrado e retornando uma mensagem de erro
       if (data.erro) {
@@ -83,6 +111,13 @@ export default function Step1() {
           type: FormAction.SETZIP,
           payload: '',
         });
+
+        setValue('city', '');
+        setValue('state', '');
+        setValue('streetAddress', '');
+        setValue('district', '');
+
+        setFocus('zip');
         return toast.error('Cep Invalido');
       }
 
@@ -106,7 +141,17 @@ export default function Step1() {
         payload: data.bairro,
       });
 
-      applyFocus('number');
+      dispatch({
+        type: FormAction.SETZIP,
+        payload: zip,
+      });
+
+      setValue('city', data.localidade);
+      setValue('state', data.uf);
+      setValue('streetAddress', data.logradouro);
+      setValue('district', data.bairro);
+
+      setFocus('number');
     } catch (e) {
       return toast.error('Serviço de CEP indisponível no momento.');
     }
@@ -142,9 +187,9 @@ export default function Step1() {
               {...register('email')}
               error={{
                 errors: errors.email,
-                fieldError:
-                  fieldsInputInvalid.includes('email') &&
-                  'Informe o email corretamente. ',
+                fieldError: fieldsInputInvalid.includes('email')
+                  ? 'Informe o email corretamente. '
+                  : inputEmailError,
               }}
               value={state.email}
             />
@@ -154,12 +199,13 @@ export default function Step1() {
               <Input
                 name="phone"
                 label="Telefone"
+                type="tel"
                 {...register('phone')}
                 error={{
                   errors: errors.phone,
-                  fieldError:
-                    fieldsInputInvalid.includes('phone') &&
-                    'Informe o telefone corretamente. ',
+                  fieldError: fieldsInputInvalid.includes('phone')
+                    ? 'Informe o telefone corretamente.'
+                    : inputPhoneError,
                 }}
                 value={state.phone}
               />
