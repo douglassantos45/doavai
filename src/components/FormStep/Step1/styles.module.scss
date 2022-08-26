@@ -14,21 +14,20 @@
 
       > span {
         position: absolute;
-        left: 50px;
-        bottom: 15px;
+        left: 53px;
+        bottom: 16px;
         font-size: 1.3rem;
         color: var(--gray-50);
-        
       }
 
       &::after {
         content: '';
         position: absolute;
         left: 17px;
-        bottom: 15px;
-        background-image: url('https://img.icons8.com/fluency/96/brazil.png');        
+        bottom: 16px;
+        background-image: url('https://img.icons8.com/fluency/96/brazil.png');
         background-size: 18px 18px;
-        width: 18px; 
+        width: 18px;
         height: 18px;
         z-index: 2;
       }
@@ -59,14 +58,12 @@
 
           &:not(:focus) + label {
             margin-left: 30px;
-            
           }
         }
       }
     }
 
     button {
-     
       font-size: 1.2rem;
       margin-top: 2.5rem;
       padding: 1rem 1.5rem;
@@ -84,17 +81,13 @@
 
 @media (min-width: 850px) {
   #step1 {
-   .col_3 {
-    display: flex;
-    gap: 1rem;
-   }
-   .col_2 {
-    display: flex;
-    gap: 1rem;
-   }
+    .col_3 {
+      display: flex;
+      gap: 1rem;
+    }
+    .col_2 {
+      display: flex;
+      gap: 1rem;
+    }
   }
 }
-
-
-
-
