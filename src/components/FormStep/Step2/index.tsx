@@ -1,15 +1,16 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import toast from 'react-hot-toast';
-import { FiPlus, FiX } from 'react-icons/fi';
-import { RiSubtractFill } from 'react-icons/ri';
-import { FormAction, useForm } from '../../../contexts/FormStepContext';
-import { conditions, equipaments } from '../../../mocks/devices';
-import { applyFocus } from '../../../utils/applyFocus';
-import { fieldValidation } from '../../../utils/validation';
 
+import { RiSubtractFill } from 'react-icons/ri';
+import { FiPlus } from 'react-icons/fi';
 import Button from '../../Button';
 
+import { FormAction, useForm } from '../../../contexts/FormStepContext';
+import { conditions, equipaments } from '../../../mocks/devices';
+
 import styles from './styles.module.scss';
+
+const MAX_DEVICES = 4;
 
 export default function Step2() {
   const { state, dispatch } = useForm();
@@ -48,8 +49,7 @@ export default function Step2() {
     for (let i = 0; i < renderDevicesCount; i++) {
       if (devicesList[i]['type'] === '' || devicesList[i]['condition'] === '') {
         setSelectedDeviceError(true);
-        setTimeout(() => setSelectedDeviceError(false), 700);
-        return;
+        return toast.error('Selecione todos os campos.');
       }
     }
 
@@ -65,15 +65,13 @@ export default function Step2() {
     const { name, value } = e.target;
     const list = [...devicesList];
 
-    console.log(index);
-
     list[index][name] = value;
     setDevicesList(list);
     setSelectedDeviceError(false);
   };
 
   const handleDeviceAdd = () => {
-    if (devicesList.length < 4) {
+    if (devicesList.length < MAX_DEVICES) {
       setDevicesList([...devicesList, { type: '', condition: '' }]);
       setRenderDevicesCount(renderDevicesCount + 1);
     } else {
