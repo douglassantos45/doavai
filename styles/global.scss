@@ -20,12 +20,13 @@
   --gray-10: #c5c4c445;
   --gray-50: #959595;
   --text-color-white: #fff;
-  --primary-color: #53D7D7;
-  --primary-color-hover: #21B6B6;
+  --primary-color: #53d7d7;
+  --primary-color-hover: #21b6b6;
   --red-invalid: rgba(243, 83, 83, 0.992);
+  --blue: #2d7ee8;
+  --blue-100: #81aef2;
   font-size: 62.5%;
 }
-
 
 body {
   background-color: var(--white-color);
@@ -42,7 +43,7 @@ label {
   color: var(--gray-50);
   background-color: var(--white-color);
   font-weight: 400;
-  
+
   transition: all 0.3s ease;
 }
 
@@ -66,11 +67,12 @@ input {
   }
 }
 
-input, select {
+input,
+select {
   padding: 1.5rem;
   color: var(--text-color);
-  -webkit-box-shadow: 4px 7px 18px 0px rgba(0,0,0,0.45); 
-  box-shadow: 3px 4px 15px -4px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 4px 7px 18px 0px rgba(0, 0, 0, 0.45);
+  box-shadow: 3px 4px 15px -4px rgba(0, 0, 0, 0.15);
   &:disabled {
     background-color: var(--gray-10);
     border: 1px solid var(--gray-10);
@@ -126,10 +128,11 @@ select {
   margin-top: 20px;
   margin-bottom: 10px;
 
-  div:nth-child(1), div:nth-child(3) {
+  div:nth-child(1),
+  div:nth-child(3) {
     background: #efefef;
     width: 90%;
-    height: .1rem;
+    height: 0.1rem;
   }
 
   div:nth-child(2) {
@@ -149,12 +152,12 @@ select {
 
 .sm {
   display: flex;
-  gap: 20px;  
+  gap: 20px;
 }
 
 .shadow {
-  -webkit-box-shadow: 4px 7px 18px 0px rgba(0,0,0,0.45); 
-  box-shadow: 3px 4px 15px -4px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 4px 7px 18px 0px rgba(0, 0, 0, 0.45);
+  box-shadow: 3px 4px 15px -4px rgba(0, 0, 0, 0.15);
 }
 
 @media (min-width: 640px) {
