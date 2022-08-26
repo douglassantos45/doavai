@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FormAction, useForm } from '../../../contexts/FormStepContext';
 import { institutions } from '../../../mocks/institutions';
@@ -10,11 +10,15 @@ export default function Step3() {
   const { handleCloseModal } = useModal();
   const { state, dispatch } = useForm();
 
-  const [institutionSelected, setInstitutionSelectedf] = useState(
-    state.institutionId || '1',
+  const [isInsitutions] = institutions.map(({ zip }) => zip === state.zip);
+  const [institutionSelected, setInstitutionSelected] = useState(
+    isInsitutions ? '1' : '0',
   );
 
-  const [isInsitutions] = institutions.map(({ zip }) => zip === '44790000');
+  useEffect(() => {
+    setInstitutionSelected(isInsitutions ? '1' : '0');
+    institutions.map(({ zip }) => console.log(zip, state.zip));
+  }, [isInsitutions]);
 
   const saveState = () => {
     dispatch({
@@ -52,7 +56,7 @@ export default function Step3() {
     const { name, value } = e.target;
     console.log(value);
 
-    setInstitutionSelectedf(value);
+    setInstitutionSelected(value);
   };
 
   return (
@@ -74,7 +78,7 @@ export default function Step3() {
               >
                 {institutions.map(
                   ({ name, id, zip }, index) =>
-                    zip === '44790000' && (
+                    zip === state.zip && (
                       <option value={id} key={id}>
                         {name}
                       </option>
