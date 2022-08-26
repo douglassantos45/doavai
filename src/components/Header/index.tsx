@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { FiX } from 'react-icons/fi';
 import { RiMenu3Fill } from 'react-icons/ri';
@@ -12,6 +13,7 @@ import styles from './styles.module.scss';
 export default function Header() {
   const [showMenu, setShowMenu] = useState(false);
   const { handleOpenModal } = useModal();
+  const { asPath } = useRouter();
 
   const handleShowMenu = () => {
     setShowMenu(!showMenu);
@@ -43,13 +45,15 @@ export default function Header() {
           </ActiveLink>
         </li>
         <li>
-          <Button
-            text="Donation"
-            setShowModal={e => {
-              handleOpenModal();
-              setShowMenu(false);
-            }}
-          />
+          {asPath !== '/institutions' && (
+            <Button
+              text="Donation"
+              setShowModal={e => {
+                handleOpenModal();
+                setShowMenu(false);
+              }}
+            />
+          )}
         </li>
       </nav>
       {showMenu ? (
