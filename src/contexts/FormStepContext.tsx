@@ -25,6 +25,7 @@ type StateProps = {
   countDevices: number;
   institutionId: string;
   completed: boolean;
+  fieldsError: string[];
 };
 
 type ContextProps = {
@@ -53,6 +54,7 @@ const initialData: StateProps = {
   countDevices: 1,
   institutionId: '1',
   completed: false,
+  fieldsError: [],
 };
 
 //Context
@@ -75,6 +77,7 @@ export enum FormAction {
   SETCOUNTDEVICES,
   SETINSTITUTION,
   SETCOMPLETED,
+  SETFIELDSERROR,
 }
 //Recebe dados e ações
 const formReducer = (state: StateProps, action: ActionProps) => {
@@ -114,6 +117,9 @@ const formReducer = (state: StateProps, action: ActionProps) => {
 
     case FormAction.SETCOMPLETED:
       return { ...state, completed: action.payload };
+
+    case FormAction.SETFIELDSERROR:
+      return { ...state, fieldsError: action.payload };
 
     default:
       return state;

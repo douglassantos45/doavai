@@ -1,5 +1,4 @@
 import { ChangeEvent, useState } from 'react';
-import toast from 'react-hot-toast';
 import { FormAction, useForm } from '../../../contexts/FormStepContext';
 import { institutions } from '../../../mocks/institutions';
 
@@ -10,11 +9,13 @@ export default function Step3() {
   const { handleCloseModal } = useModal();
   const { state, dispatch } = useForm();
 
-  const [institutionSelected, setInstitutionSelectedf] = useState(
-    state.institutionId || '1',
+  const [isInsitutionsZip] = institutions.map(
+    ({ zip }) => zip === state.zip.replace('-', ''),
   );
 
-  const [isInsitutions] = institutions.map(({ zip }) => zip === '44790000');
+  const [institutionSelected, setInstitutionSelected] = useState(
+    state.institutionId,
+  );
 
   const saveState = () => {
     dispatch({
@@ -35,9 +36,7 @@ export default function Step3() {
   const submit = async () => {
     dispatch({
       type: FormAction.SETINSTITUTION,
-      payload: {
-        id: institutionSelected,
-      },
+      payload: institutionSelected,
     });
 
     dispatch({
@@ -52,7 +51,7 @@ export default function Step3() {
     const { name, value } = e.target;
     console.log(value);
 
-    setInstitutionSelectedf(value);
+    setInstitutionSelected(value);
   };
 
   return (
@@ -65,7 +64,7 @@ export default function Step3() {
         </div>
 
         <div className={`${styles.wrapper}`}>
-          {isInsitutions ? (
+          {isInsitutionsZip ? (
             <label htmlFor="type">
               <select
                 name="institution"
@@ -74,7 +73,7 @@ export default function Step3() {
               >
                 {institutions.map(
                   ({ name, id, zip }, index) =>
-                    zip === '44790000' && (
+                    zip === state.zip.replace('-', '') && (
                       <option value={id} key={id}>
                         {name}
                       </option>

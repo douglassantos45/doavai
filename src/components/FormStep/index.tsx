@@ -5,7 +5,7 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 
 export default function FormStep() {
-  const { state, dispatch } = useForm();
+  const { state } = useForm();
   const [formStep, setFormStep] = useState(state.currentStep);
 
   useEffect(() => {
