@@ -13,11 +13,6 @@ export type InputValidationProps = {
   complement: string;
 };
 
-export type SelectValidationProps = {
-  device: string;
-  condition?: string;
-};
-
 export const inputSchema = yup
   .object({
     name: yup
@@ -25,34 +20,27 @@ export const inputSchema = yup
       .required('Nome é obrigatório')
       .min(3, 'Mínimo de 3 caracteres')
       .max(80, 'Máximo de 20 caracteres'),
-    email: yup.string().required('E-mail é obrigatório'),
+    email: yup.string(),
     phone: yup.string().required('O telefone é obrigatório'),
     zip: yup
       .string()
+      .required('O CEP é obrigatório')
       .min(3, 'Mínimo de 8 caracteres')
-      .max(20, 'Máximo de 8 caracteres')
-      .required('O CEP é obrigatório'),
+      .max(20, 'Máximo de 8 caracteres'),
     number: yup
       .string()
       .min(1, 'Min. de 1 caract.')
       .max(999999, 'O número informado é muito grande.'),
     streetAddress: yup
       .string()
-
       .required('A rua é obrigatório')
       .min(3, 'Mínimo de 3 caracteres')
       .max(50, 'Máximo de 20 caracteres'),
     district: yup
       .string()
+      .required('O distrito é obrigatório.')
       .min(3, 'Mínimo de 3 caracteres')
-      .max(50, 'Máximo de 20 caracteres')
-      .required('O distrito é obrigatório.'),
+      .max(50, 'Máximo de 20 caracteres'),
     city: yup.string(),
-  })
-  .required();
-
-export const selectSchema = yup
-  .object({
-    device: yup.string().required('O equipamento é obrigatório'),
   })
   .required();
