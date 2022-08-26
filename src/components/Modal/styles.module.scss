@@ -25,11 +25,11 @@
   flex-direction: column;
   padding: 3rem 0.5rem 3rem 2rem;
 
+  max-width: 767px;
+  max-height: 950px;
+
   width: 90%;
   height: 90%;
-  max-width: 767px;
-  max-height: 900px;
-  
 
   transition: all 0.3s ease;
 
@@ -38,7 +38,7 @@
     font-weight: 700;
 
     span {
-      color: var(--primary-color)
+      color: var(--primary-color);
     }
   }
 
@@ -52,7 +52,7 @@
     cursor: pointer;
 
     &:hover {
-      filter: contrast(0.6)
+      filter: contrast(0.6);
     }
   }
 
@@ -67,14 +67,13 @@
     bottom: 20px;
     left: 0;
     right: 0;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
 
     width: 100%;
   }
-
 
   /* Chrome, Edge and Safari */
   *::-webkit-scrollbar {
@@ -103,8 +102,8 @@
 @media (min-width: 560px) {
   #modal {
     .modal_wrapper {
-      max-height: 660px;
-      padding: 3rem; 
+      //max-height: 660px;
+      padding: 3rem;
     }
     .close_modal {
       right: 25px;
