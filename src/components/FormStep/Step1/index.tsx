@@ -54,7 +54,9 @@ const Step1 = () => {
     if (inputZip) {
       setValue('zip', normalizeZip(inputZip));
     }
+  }, [inputZip]);
 
+  useEffect(() => {
     if (inputPhone) {
       setValue('phone', normalizePhone(inputPhone));
       setInputPhoneError('');
@@ -63,7 +65,9 @@ const Step1 = () => {
         setFocus('phone');
       }
     }
+  }, [inputPhone]);
 
+  useEffect(() => {
     if (inputEmail) {
       setInputEmailError('');
       if (!validator.isEmail(inputEmail)) {
@@ -71,7 +75,7 @@ const Step1 = () => {
         setFocus('email');
       }
     }
-  }, [inputPhone, inputEmail, inputZip]);
+  }, [inputEmail]);
 
   const handleNextPage = () => {
     dispatch({
