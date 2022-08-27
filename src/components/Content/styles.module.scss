@@ -2,12 +2,11 @@
   display: grid;
   justify-items: center;
   align-items: center;
-  gap: 3rem;
 
   margin-top: 70px;
   padding: 0 2rem;
-  height: 100%;
   width: 100%;
+  flex: 1;
 
   .title {
     font-size: 3rem;
@@ -37,21 +36,18 @@
   }
 }
 
-
 @media (min-width: 800px) {
   .content_wrapper {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 80px);
-    grid-template-areas: 
-    "title ilustration"
-    "description ilustration"
-    "button ilustration"
-    ;
+    grid-template-areas:
+      'title ilustration'
+      'description ilustration'
+      'button ilustration';
     justify-items: left;
     margin-top: 150px;
     gap: 3rem;
-
 
     height: 100%;
     width: 100%;

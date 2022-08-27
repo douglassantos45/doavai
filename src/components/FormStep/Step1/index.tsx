@@ -1,7 +1,7 @@
 import { useForm as useReactHooForm } from 'react-hook-form';
 import { InputValidationProps, inputSchema } from '../yupSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import validator from 'validator';
 
@@ -27,7 +27,7 @@ type FormInputProps = {
   complement?: string;
 };
 
-export default function Step1() {
+const Step1 = () => {
   const {
     register,
     handleSubmit,
@@ -307,4 +307,6 @@ export default function Step1() {
       </form>
     </div>
   );
-}
+};
+
+export default memo(Step1);

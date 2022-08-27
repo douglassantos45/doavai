@@ -23,6 +23,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputPorps> = (
   { name, label, style = '', disabled, value, error, ...rest },
   ref,
 ) => {
+  console.log('render');
   return (
     <div id={styles.input}>
       <input

@@ -31,9 +31,12 @@
 body {
   background-color: var(--white-color);
   color: var(--text-color);
-  min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+
+  > div {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 button {
