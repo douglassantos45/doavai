@@ -1,11 +1,11 @@
 import { useForm as useReactHooForm } from 'react-hook-form';
 import { InputValidationProps, inputSchema } from '../yupSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import validator from 'validator';
 
-import { Input } from '../../Input';
+import Input from '../../Input';
 import Button from '../../Button';
 
 import { FormAction, useForm } from '../../../contexts/FormStepContext';
@@ -27,7 +27,7 @@ type FormInputProps = {
   complement?: string;
 };
 
-export default function Step1() {
+const Step1 = () => {
   const {
     register,
     handleSubmit,
@@ -71,7 +71,7 @@ export default function Step1() {
         setFocus('email');
       }
     }
-  }, [inputPhone || inputEmail || inputZip]);
+  }, [inputPhone, inputEmail, inputZip]);
 
   const handleNextPage = () => {
     dispatch({
@@ -96,7 +96,7 @@ export default function Step1() {
 
   const checkCep = async () => {
     const zip = inputZip?.replace('-', '');
-    if (zip.length === 0) return;
+    if (zip?.length === 0) return;
 
     if (zip?.length < 8 || zip === undefined)
       return toast.error('CEP inválido.');
@@ -307,4 +307,6 @@ export default function Step1() {
       </form>
     </div>
   );
-}
+};
+
+export default memo(Step1);

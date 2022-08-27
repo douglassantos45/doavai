@@ -1,6 +1,7 @@
-import '../../styles/global.scss';
 import { FormProvider } from '../contexts/FormStepContext';
 import { ModalProvider } from '../contexts/ModalContext';
+
+import '../../styles/global.scss';
 
 function MyApp({ Component, pageProps }) {
   return (

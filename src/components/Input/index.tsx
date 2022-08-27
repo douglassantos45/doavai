@@ -2,6 +2,7 @@ import {
   forwardRef,
   ForwardRefRenderFunction,
   InputHTMLAttributes,
+  memo,
 } from 'react';
 import { FieldError } from 'react-hook-form';
 import styles from './styles.module.scss';
@@ -22,6 +23,7 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputPorps> = (
   { name, label, style = '', disabled, value, error, ...rest },
   ref,
 ) => {
+  console.log('render');
   return (
     <div id={styles.input}>
       <input
@@ -46,4 +48,6 @@ const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputPorps> = (
   );
 };
 
-export const Input = forwardRef(InputBase);
+const Input = forwardRef(InputBase);
+
+export default memo(Input);
