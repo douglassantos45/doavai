@@ -21,7 +21,7 @@ export default function Modal() {
 
   const closeModal = () => {
     modalEl.current.style.transform = 'translateY(calc(-100% - 10rem))';
-    setTimeout(() => handleCloseModal(), 310);
+    setTimeout(() => handleCloseModal(), 200);
   };
 
   if (!showModal) {

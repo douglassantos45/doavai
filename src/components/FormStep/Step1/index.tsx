@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import validator from 'validator';
 
-import { Input } from '../../Input';
+import Input from '../../Input';
 import Button from '../../Button';
 
 import { FormAction, useForm } from '../../../contexts/FormStepContext';
@@ -71,7 +71,7 @@ export default function Step1() {
         setFocus('email');
       }
     }
-  }, [inputPhone || inputEmail || inputZip]);
+  }, [inputPhone, inputEmail, inputZip]);
 
   const handleNextPage = () => {
     dispatch({
@@ -96,7 +96,7 @@ export default function Step1() {
 
   const checkCep = async () => {
     const zip = inputZip?.replace('-', '');
-    if (zip.length === 0) return;
+    if (zip?.length === 0) return;
 
     if (zip?.length < 8 || zip === undefined)
       return toast.error('CEP inválido.');

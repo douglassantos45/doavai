@@ -1,0 +1,115 @@
+.content_wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 3rem;
+
+  margin-top: 70px;
+  padding: 0 2rem;
+  height: 100%;
+  width: 100%;
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 1.6rem;
+    text-align: center;
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  button {
+    padding: 1.5rem 2rem;
+    max-width: 250px;
+    font-size: 1.7rem;
+    border-radius: 4rem;
+    color: var(--text-color-white);
+    font-weight: 600;
+    background-color: var(--blue);
+    cursor: pointer;
+    grid-area: button;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: var(--blue-100);
+      transform: scale(1.02);
+    }
+  }
+
+  img {
+    display: none;
+    width: 100%;
+  }
+
+  .text_logo {
+    color: var(--primary-color);
+  }
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  background-color: var(--blue);
+  min-height: 100px;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .social {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (min-width: 800px) {
+  .content_wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 80px);
+    grid-template-areas:
+      'title ilustration'
+      'description ilustration'
+      'button ilustration';
+    justify-items: left;
+    margin-top: 150px;
+    gap: 3rem;
+
+    height: 100%;
+    width: 100%;
+
+    .title {
+      grid-area: title;
+      font-size: 4rem;
+    }
+
+    .description {
+      grid-area: description;
+      text-align: left;
+    }
+
+    button {
+      grid-area: button;
+    }
+
+    img {
+      display: block;
+      grid-area: ilustration;
+      width: 85%;
+      margin-left: 30px;
+    }
+  }
+}
