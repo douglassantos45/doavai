@@ -11,7 +11,7 @@
 Para isso precisamos criar um site/plataforma/sistema por onde o interessado em doar poderá incluir sua doação, sabendo que se fará bom uso aquele equipamento.
 
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;;">
-  <img alt="Página com um modal com os dados para serem preechidos pelo doador." src="https://imgur.com/QOW4nNy.png">
+  <img alt="Página com um modal com os dados para serem preechidos pelo doador." src="[https://imgur.com/QOW4nNy.png](https://images2.imgbox.com/37/b5/9aKkLcDU_o.png)">
   <img alt="Página com um modal com a representação de um homem comemorando a doação e um campo para o doador deixar uma mensagem para quem vai receber a doação." src="https://imgur.com/gMbILSd.png">
 </div>
 
