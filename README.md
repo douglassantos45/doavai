@@ -38,7 +38,7 @@ yarn dev
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  
+  <tr>
     <td align="center"><a href="https://github.com/douglassantos45"><img src="https://avatars.githubusercontent.com/u/45425938?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Douglas Tott</b></sub></a><br /><a href="https://github.com/App Masters/doar-computadores-frontend/commits?author=douglassantos45" title="Code">💻</a></td>
   </tr>
 </table>
