@@ -15,3 +15,35 @@ Para isso precisamos criar um site/plataforma/sistema por onde o interessado em 
   <img alt="Página com um modal com a representação de um homem comemorando a doação e um campo para o doador deixar uma mensagem para quem vai receber a doação." src="https://imgur.com/gMbILSd.png">
 </div>
 
+
+## Rodando localmente
+
+**Clonar o repositório e entrar na pasta**
+
+```bash
+https://github.com/douglassantos45/doavai.git
+cd doavai
+```
+
+**Instalando dependencias**
+
+```bash
+yarn install
+yarn dev
+```
+
+## Colaboradores
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  
+    <td align="center"><a href="https://github.com/douglassantos45"><img src="https://avatars.githubusercontent.com/u/45425938?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Douglas Tott</b></sub></a><br /><a href="https://github.com/App Masters/doar-computadores-frontend/commits?author=douglassantos45" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
